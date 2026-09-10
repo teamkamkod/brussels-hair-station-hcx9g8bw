@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRUSSELS HAIR STATION — Barbier & Salon de coiffure à Schaerbeek</title>
+<meta name="description" content="Barbier et salon de coiffure à Schaerbeek. Note 4.9/5 sur 279 avis. Coupes, rasages, accueil multilingue. Av. Dailly 212, 1030 Schaerbeek.">
+<meta name="keywords" content="barbier Schaerbeek, coiffeur Schaerbeek, salon de coiffure Bruxelles, coupe homme Schaerbeek, rasage Bruxelles, barbier près de la gare du Nord">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #121212;
+    --secondary: #C9A227;
+    --background: #F5F1E8;
+    --text: #1A1A1A;
+    --cta: #C9A227;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+    --radius: 0;
+    --transition: 0.4s ease;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--background);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    line-height: 1.2;
+  }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .cta {
+    display: inline-block;
+    background: var(--cta);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .cta:hover { background: #a8841e; transform: translateY(-2px); }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-text {
+    font-size: 1rem;
+    color: #444;
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* FADE-IN ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===================== NAV ===================== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(18,18,18,0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid rgba(201,162,39,0.2);
+  }
+
+  .nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--secondary);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+
+  nav ul {
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 64px; left: 0; right: 0;
+    background: rgba(18,18,18,0.98);
+    padding: 1rem 0;
+    border-top: 1px solid rgba(201,162,39,0.2);
+  }
+
+  nav ul.open {
+    display: flex;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    transition: color var(--transition);
+  }
+  nav ul li a:hover { color: var(--secondary); }
+
+  .nav-cta-wrap { display: none; }
+
+  .burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  }
+  .burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--secondary);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger.active span:nth-child(2) { opacity: 0; }
+  .burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (min-width: 768px) {
+    nav { padding: 0 2.5rem; }
+    .burger { display: none; }
+    nav ul {
+      display: flex !important;
+      flex-direction: row;
+      position: static;
+      background: none;
+      padding: 0;
+      border: none;
+      gap: 0.25rem;
+      align-items: center;
+    }
+    nav ul li a { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
+    .nav-cta-wrap { display: block; }
+    .nav-cta-wrap .cta { padding: 0.55rem 1.25rem; font-size: 0.8rem; }
+  }
+
+  /* ===================== HERO ===================== */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img { object-position: center top; }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.55) 55%, rgba(18,18,18,0.2) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    width: 100%;
+  }
+
+  .hero-inner {
+    max-width: 560px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201,162,39,0.15);
+    border: 1px solid rgba(201,162,39,0.4);
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--secondary);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--secondary);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-text {
+    color: rgba(255,255,255,0.82);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .cta-outline {
+    display: inline-block;
+    border: 2px solid rgba(255,255,255,0.5);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    transition: border-color var(--transition), color var(--transition);
+  }
+  .cta-outline:hover { border-color: var(--secondary); color: var(--secondary); }
+
+  .hero-rating {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .stars-row { display: flex; gap: 2px; }
+  .star { color: var(--secondary); font-size: 1rem; }
+  .rating-text { color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+  .rating-num { color: #fff; font-weight: 700; }
+
+  /* ===================== ABOUT ===================== */
+  #apropos {
+    padding: 5rem 1.5rem;
+    background: var(--primary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #apropos::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--secondary);
+  }
+
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text-col .section-label { color: var(--secondary); }
+  .about-text-col .section-heading { color: #fff; }
+  .about-text-col .section-text { color: rgba(255,255,255,0.75); max-width: 100%; }
+
+  .about-img-col {
+    position: relative;
+    height: 320px;
+  }
+
+  /* corner_frame decoration */
+  .corner-frame {
+    position: relative;
+    display: block;
+  }
+  .corner-frame::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px;
+    width: 60px; height: 60px;
+    border-top: 3px solid var(--secondary);
+    border-left: 3px solid var(--secondary);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .corner-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; right: -10px;
+    width: 60px; height: 60px;
+    border-bottom: 3px solid var(--secondary);
+    border-right: 3px solid var(--secondary);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .about-img-col .corner-frame {
+    height: 100%;
+    width: 100%;
+  }
+  .about-img-col .corner-frame img {
+    height: 100%;
+    object-position: center;
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: left; }
+  .stat-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--secondary);
+    font-weight: 700;
+    display: block;
+  }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  @media (min-width: 768px) {
+    .about-inner { grid-template-columns: 1fr 1fr; }
+    .about-img-col { height: 420px; }
+  }
+
+  /* ===================== FEATURED MENU ===================== */
+  #prestations {
+    padding: 5rem 1.5rem;
+    background: var(--background);
+  }
+
+  .prestations-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .prestations-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .prestations-header .section-text { margin: 0 auto; text-align: center; }
+
+  .prestations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .prestations-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .prestations-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .prestation-card {
+    background: var(--primary);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition);
+  }
+  .prestation-card:hover { transform: translateY(-4px); }
+
+  .prestation-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--secondary);
+  }
+
+  .prestation-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .prestation-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .prestation-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ===================== REVIEWS ===================== */
+  #avis {
+    padding: 5rem 1.5rem;
+    background: var(--primary);
+  }
+
+  .avis-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .avis-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .avis-header .section-heading { color: #fff; }
+  .avis-header .section-text { color: rgba(255,255,255,0.7); margin: 0 auto; text-align: center; }
+
+  .avis-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .avis-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .avis-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,162,39,0.2);
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* icon quote_style */
+  .quote-icon {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: block;
+    font-family: Georgia, serif;
+    opacity: 0.8;
+  }
+
+  .avis-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
+  .avis-stars .star { color: var(--secondary); font-size: 0.95rem; }
+
+  .avis-text {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .avis-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .avis-avatar {
+    width: 40px; height: 40px;
+    background: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .avis-author-name {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  .avis-author-date {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .avis-global {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,162,39,0.2);
+  }
+  .avis-global-num {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--secondary);
+    font-weight: 700;
+    display: block;
+  }
+  .avis-global-label { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+  /* ===================== GALLERY ===================== */
+  #galerie {
+    padding: 5rem 1.5rem;
+    background: var(--background);
+    overflow: hidden;
+  }
+
+  .galerie-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .galerie-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .galerie-header .section-text { margin: 0 auto; text-align: center; }
+
+  /* carousel gallery_style */
+  .carousel-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1.25rem;
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    flex: 0 0 calc(100% - 0px);
+    height: 320px;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .carousel-slide { flex: 0 0 calc(50% - 0.625rem); height: 400px; }
+  }
+
+  @media (min-width: 1024px) {
+    .carousel-slide { flex: 0 0 calc(50% - 0.625rem); height: 460px; }
+  }
+
+  .carousel-slide .corner-frame {
+    height: 100%;
+    width: 100%;
+  }
+  .carousel-slide .corner-frame img {
+    height: 100%;
+    object-position: center;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.75rem;
+  }
+
+  .carousel-btn {
+    background: var(--primary);
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background var(--transition), color var(--transition);
+  }
+  .carousel-btn:hover { background: var(--secondary); color: #fff; }
+
+  /* ===================== HOURS & LOCATION ===================== */
+  #horaires {
+    padding: 5rem 1.5rem;
+    background: var(--primary);
+  }
+
+  .horaires-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .horaires-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  .horaires-col .section-heading { color: #fff; margin-bottom: 1.5rem; }
+
+  .horaires-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .horaires-table tr { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .horaires-table tr:last-child { border-bottom: none; }
+  .horaires-table td {
+    padding: 0.65rem 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+  }
+  .horaires-table td:first-child {
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    text-transform: capitalize;
+    width: 45%;
+  }
+  .horaires-table tr.closed td { color: rgba(255,255,255,0.35); }
+
+  .horaires-address {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201,162,39,0.2);
+  }
+  .horaires-address p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  .horaires-address a {
+    color: var(--secondary);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: opacity var(--transition);
+  }
+  .horaires-address a:hover { opacity: 0.8; }
+
+  .map-col { position: relative; }
+  .map-col .section-heading { color: #fff; margin-bottom: 1.5rem; }
+
+  .map-frame {
+    width: 100%;
+    height: 320px;
+    border: none;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  @media (min-width: 768px) { .map-frame { height: 100%; min-height: 380px; } }
+
+  /* ===================== CONTACT FORM ===================== */
+  #contact {
+    padding: 5rem 1.5rem;
+    background: var(--background);
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-inner { grid-template-columns: 1fr 1fr; align-items: start; }
+  }
+
+  .contact-info .section-text { margin-bottom: 2rem; }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-detail-text { font-size: 0.9rem; color: #444; line-height: 1.6; }
+  .contact-detail-text strong { color: var(--primary); display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+
+  .contact-form-wrap {
+    background: var(--primary);
+    padding: 2.5rem 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color var(--transition);
+    border-radius: 0;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--secondary); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+  .contact-form-wrap .cta { width: 100%; margin-top: 0.5rem; }
+
+  /* ===================== TRUST SIGNALS ===================== */
+  #confiance {
+    padding: 5rem 1.5rem;
+    background: var(--secondary);
+  }
+
+  .confiance-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .confiance-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .confiance-header .section-heading { color: var(--primary); }
+  .confiance-header .section-label { color: var(--primary); opacity: 0.7; }
+
+  .confiance-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .confiance-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .confiance-card {
+    background: rgba(18,18,18,0.08);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(18,18,18,0.12);
+    transition: background var(--transition);
+  }
+  .confiance-card:hover { background: rgba(18,18,18,0.14); }
+
+  .confiance-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .confiance-label {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .confiance-desc {
+    font-size: 0.88rem;
+    color: rgba(18,18,18,0.75);
+    line-height: 1.6;
+  }
+
+  .trust-extras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .trust-badge {
+    background: rgba(18,18,18,0.1);
+    border: 1px solid rgba(18,18,18,0.15);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===================== FOOTER ===================== */
+  footer {
+    background: #0a0a0a;
+    padding: 3rem 1.5rem 2rem;
+    border-top: 3px solid var(--secondary);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
+  }
+
+  .footer-brand .nav-logo {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    line-height: 1.8;
+    max-width: 320px;
+  }
+
+  .footer-brand .cta { margin-top: 1.5rem; }
+
+  .footer-col h4 {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    margin-bottom: 0.5rem;
+  }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    transition: color var(--transition);
+  }
+  .footer-col ul li a:hover { color: var(--secondary); }
+
+  .footer-col p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+  .footer-col a {
+    color: var(--secondary);
+    transition: opacity var(--transition);
+  }
+  .footer-col a:hover { opacity: 0.8; }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .footer-bottom p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.78rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav aria-label="Navigation principale">
+  <a href="#hero" class="nav-logo">BRUSSELS HAIR STATION</a>
+  <ul id="nav-menu">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#prestations">Prestations</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#horaires">Horaires</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta-wrap">
+    <a href="tel:+3249399919" class="cta" aria-label="Nous appeler">Nous appeler</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" aria-label="Accueil Brussels Hair Station">
+  <div class="hero-bg">
+    <img src="assets/hero.jpg" alt="Barbier Brussels Hair Station à Schaerbeek — ambiance intérieure chaleureuse" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="hero-inner fade-in">
+      <div class="hero-badge">
+        <span>★</span>
+        <span>Barbier & Salon de coiffure — Schaerbeek</span>
+      </div>
+      <h1 class="hero-title">BRUSSELS<br>HAIR STATION</h1>
+      <p class="hero-subtitle">Barbier & Salon de coiffure à Schaerbeek</p>
+      <p class="hero-text">Coupes et rasages soignés, accueil multilingue et prix avantageux. Retrouvez-nous à l'Av. Dailly 212, 1030 Schaerbeek.</p>
+      <div class="hero-actions">
+        <a href="tel:+3249399919" class="cta" aria-label="Appelez Brussels Hair Station">Appelez-nous</a>
+        <a href="#contact" class="cta-outline" aria-label="Nous contacter par formulaire">Nous contacter</a>
+      </div>
+      <div class="hero-rating" aria-label="Note 4.9 sur 5 basée sur 279 avis">
+        <div class="stars-row">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <p class="rating-text"><span class="rating-num">4.9</span> / 5 — 279 avis clients</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== À PROPOS ===================== -->
+<section id="apropos" aria-label="À propos de Brussels Hair Station">
+  <div class="about-inner">
+    <div class="about-text-col fade-in">
+      <span class="section-label">Notre histoire</span>
+      <h2 class="section-heading">À propos de BRUSSELS HAIR STATION</h2>
+      <p class="section-text">BRUSSELS HAIR STATION est un barbier et salon de coiffure situé à Schaerbeek, à Bruxelles. Notre équipe professionnelle vous accueille pour vos coupes de cheveux et vos rasages, dans une ambiance sympathique et multilingue. Nous mettons un point d'honneur à offrir un service précis à prix avantageux, pour que chaque passage soit une réussite.</p>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-num">4.9</span>
+          <span class="stat-label">Note moyenne</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">279</span>
+          <span class="stat-label">Avis clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">7j/7</span>
+          <span class="stat-label">Ouvert (sauf lundi)</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-img-col fade-in">
+      <div class="corner-frame" style="height:100%;">
+        <img src="assets/gallery-1.jpg" alt="Intérieur du salon Brussels Hair Station à Schaerbeek" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRESTATIONS ===================== -->
+<section id="prestations" aria-label="Nos prestations">
+  <div class="prestations-inner">
+    <div class="prestations-header fade-in">
+      <span class="section-label">Ce que nous faisons</span>
+      <h2 class="section-heading">Nos prestations</h2>
+      <p class="section-text">Chez BRUSSELS HAIR STATION, nous vous proposons des coupes de cheveux et des rasages réalisés par un personnel professionnel, sympathique et multilingue, à prix avantageux.</p>
+    </div>
+    <div class="prestations-grid">
+      <div class="prestation-card fade-in">
+        <span class="prestation-icon">✂️</span>
+        <h3 class="prestation-name">Coupes de cheveux</h3>
+        <p class="prestation-desc">Des coupes réalisées avec précision par notre équipe professionnelle, pour hommes et enfants, avec dégradé et contours nets.</p>
+      </div>
+      <div class="prestation-card fade-in">
+        <span class="prestation-icon">🪒</span>
+        <h3 class="prestation-name">Rasages</h3>
+        <p class="prestation-desc">Un rasage soigné, pour un résultat net et précis. Taille de barbe et rasage traditionnel réalisés avec soin et expertise.</p>
+      </div>
+      <div class="prestation-card fade-in">
+        <span class="prestation-icon">💆</span>
+        <h3 class="prestation-name">Soins capillaires</h3>
+        <p class="prestation-desc">Shampoing et soins capillaires avec des produits professionnels, pour prendre soin de vos cheveux à chaque visite.</p>
+      </div>
+      <div class="prestation-card fade-in">
+        <span class="prestation-icon">💈</span>
+        <h3 class="prestation-name">Coiffage & Styling</h3>
+        <p class="prestation-desc">Finitions soignées, coiffage et styling pour repartir avec un look impeccable, adapté à votre style et à votre personnalité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AVIS CLIENTS ===================== -->
+<section id="avis" aria-label="Avis clients Brussels Hair Station">
+  <div class="avis-inner">
+    <div class="avis-header fade-in">
+      <span class="section-label">Ce qu'ils disent</span>
+      <h2 class="section-heading">Avis clients</h2>
+      <p class="section-text">Nos clients nous recommandent : note de 4.9 sur 5 pour 279 avis.</p>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card fade-in">
+        <span class="quote-icon" aria-hidden="true">"</span>
+        <div class="avis-stars" aria-label="5 étoiles sur 5">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <p class="avis-text">« Toujours très satisfait de mes coupes de cheveux et de mes rasages. Personnel professionnel, sympathique, multilingue et prix avantageux ! »</p>
+        <div class="avis-author">
+          <div class="avis-avatar" aria-hidden="true">A</div>
+          <div>
+            <p class="avis-author-name">Alberto Natta</p>
+            <p class="avis-author-date">il y a moins d'une semaine</p>
+          </div>
+        </div>
+      </div>
+      <div class="avis-card fade-in">
+        <span class="quote-icon" aria-hidden="true">"</span>
+        <div class="avis-stars" aria-label="5 étoiles sur 5">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <p class="avis-text">« Le meilleur coiffeur que j'aie jamais eu en 26 ans ! Professionnel et précis, il parle toutes les langues du monde ! Il va me manquer. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar" aria-hidden="true">A</div>
+          <div>
+            <p class="avis-author-name">Alessandro Marconi</p>
+            <p class="avis-author-date">il y a moins d'une semaine</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="avis-global fade-in">
+      <span class="avis-global-num">4.9 / 5</span>
+      <p class="avis-global-label">Basé sur 279 avis clients vérifiés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERIE ===================== -->
+<section id="galerie" aria-label="Galerie Brussels Hair Station">
+  <div class="galerie-inner">
+    <div class="galerie-header fade-in">
+      <span class="section-label">En images</span>
+      <h2 class="section-heading">Notre galerie</h2>
+      <p class="section-text">Découvrez l'ambiance de BRUSSELS HAIR STATION et le travail de notre équipe.</p>
+    </div>
+    <div class="carousel-wrap fade-in" aria-label="Carrousel de photos du salon">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <div class="corner-frame" style="height:100%;">
+            <img src="assets/hero.jpg" alt="Ambiance intérieure du salon Brussels Hair Station" loading="lazy">
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="corner-frame" style="height:100%;">
+            <img src="assets/gallery-1.jpg" alt="Coupe de cheveux réalisée chez Brussels Hair Station à Schaerbeek" loading="lazy">
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="corner-frame" style="height:100%;">
+            <img src="assets/gallery-2.jpg" alt="Rasage et taille de barbe chez Brussels Hair Station" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls" aria-label="Contrôles du carrousel">
+      <button class="carousel-btn" id="prevBtn" aria-label="Image précédente">&#8592;</button>
+      <button class="carousel-btn" id="nextBtn" aria-label="Image suivante">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HORAIRES & ADRESSE ===================== -->
+<section id="horaires" aria-label="Horaires et adresse Brussels Hair Station">
+  <div class="horaires-inner">
+    <div class="horaires-col fade-in">
+      <span class="section-label">Quand nous trouver</span>
+      <h2 class="section-heading">Horaires & adresse</h2>
+      <table class="horaires-table" aria-label="Tableau des horaires d'ouverture">
+        <tbody>
+          <tr class="closed">
+            <td>Lundi</td>
+            <td>Fermé</td>
+          </tr>
+          <tr>
+            <td>Mardi</td>
+            <td>11:00 – 19:00</td>
+          </tr>
+          <tr>
+            <td>Mercredi</td>
+            <td>10:00 – 19:00</td>
+          </tr>
+          <tr>
+            <td>Jeudi</td>
+            <td>10:00 – 19:00</td>
+          </tr>
+          <tr>
+            <td>Vendredi</td>
+            <td>09:00 – 19:00</td>
+          </tr>
+          <tr>
+            <td>Samedi</td>
+            <td>09:00 – 19:00</td>
+          </tr>
+          <tr>
+            <td>Dimanche</td>
+            <td>09:00 – 19:00</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="horaires-address">
+        <p><strong style="color:#fff;">Adresse</strong>Av. Dailly 212, 1030 Schaerbeek, Belgique</p>
+        <p><strong style="color:#fff;">Téléphone</strong><a href="tel:+3249399919">+32 493 99 91 91</a></p>
+        <a href="tel:+3249399919" class="cta" style="margin-top:1.25rem;" aria-label="Appelez Brussels Hair Station">Appelez-nous</a>
+      </div>
+    </div>
+    <div class="map-col fade-in">
+      <span class="section-label">Nous trouver</span>
+      <h2 class="section-heading">Notre emplacement</h2>
+      <iframe
+        class="map-frame"
+        title="Carte Brussels Hair Station — Av. Dailly 212, 1030 Schaerbeek"
+        src="https://www.google.com/maps?q=50.8676,4.3794&z=16&output=embed"
+        allowfullscreen
+        loading="lazy"
+        aria-label="Carte Google Maps montrant l'emplacement de Brussels Hair Station à Schaerbeek">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FORMULAIRE DE CONTACT ===================== -->
+<section id="contact" aria-label="Formulaire de contact Brussels Hair Station">
+  <div class="contact-inner">
+    <div class="contact-info fade-in">
+      <span class="section-label">Écrivez-nous</span>
+      <h2 class="section-heading">Contactez-nous</h2>
+      <p class="section-text">Une question ou une envie de passer ? Appelez-nous au +32 493 99 91 91 ou rendez-nous visite à l'Av. Dailly 212, 1030 Schaerbeek.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon" aria-hidden="true">📍</div>
+        <div class="contact-detail-text">
+          <strong>Adresse</strong>
+          Av. Dailly 212, 1030 Schaerbeek, Belgique
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon" aria-hidden="true">📞</div>
+        <div class="contact-detail-text">
+          <strong>Téléphone</strong>
+          <a href="tel:+3249399919" style="color:var(--secondary);">+32 493 99 91 91</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon" aria-hidden="true">🕐</div>
+        <div class="contact-detail-text">
+          <strong>Accueil sans rendez-vous</strong>
+          Venez directement, nous vous accueillons sans rendez-vous préalable.
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap fade-in">
+      <form action="https://checkout.kamkod.com/contact" method="POST" aria-label="Formulaire de contact">
+        <input type="hidden" name="lead_id" value="ChIJBcx9g8bDw0cRpMuSMNG9cOI">
+        <div class="form-group">
+          <label for="name">Votre nom</label>
+          <input type="text" id="name" name="name" placeholder="Prénom et nom" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Votre adresse e-mail</label>
+          <input type="email" id="email" name="email" placeholder="exemple@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" placeholder="Posez votre question ou décrivez votre demande." required></textarea>
+        </div>
+        <button type="submit" class="cta" aria-label="Envoyer votre message à Brussels Hair Station">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST SIGNALS ===================== -->
+<section id="confiance" aria-label="Pourquoi choisir Brussels Hair Station">
+  <div class="confiance-inner">
+    <div class="confiance-header fade-in">
+      <span class="section-label">Nos engagements</span>
+      <h2 class="section-heading">Pourquoi nous choisir</h2>
+    </div>
+    <div class="confiance-grid">
+      <div class="confiance-card fade-in">
+        <span class="confiance-icon" aria-hidden="true">⭐</span>
+        <p class="confiance-label">Note 4.9/5</p>
+        <p class="confiance-desc">279 avis clients vérifiés témoignent de la qualité de notre service.</p>
+      </div>
+      <div class="confiance-card fade-in">
+        <span class="confiance-icon" aria-hidden="true">👨‍💼</span>
+        <p class="confiance-label">Personnel professionnel</p>
+        <p class="confiance-desc">Sympathique et multilingue, notre équipe vous accueille avec le sourire.</p>
+      </div>
+      <div class="confiance-card fade-in">
+        <span class="confiance-icon" aria-hidden="true">💰</span>
+        <p class="confiance-label">Prix avantageux</p>
+        <p class="confiance-desc">Un service de qualité à prix accessible, pour tous les budgets.</p>
+      </div>
+    </div>
+    <div class="trust-extras fade-in">
+      <span class="trust-badge">✓ Accueil sans rendez-vous possible</span>
+      <span class="trust-badge">✓ Produits professionnels</span>
+      <span class="trust-badge">✓ Paiement par carte accepté</span>
+      <span class="trust-badge">✓ Proche arrêt de tram et bus</span>
+      <span class="trust-badge">✓ Ambiance conviviale et décontractée</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer aria-label="Pied de page Brussels Hair Station">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo">BRUSSELS HAIR STATION</span>
+      <p>Barbier & Salon de coiffure à Schaerbeek. Av. Dailly 212, 1030 Schaerbeek, Belgique. Téléphone : +32 493 99 91 91.</p>
+      <a href="tel:+3249399919" class="cta" aria-label="Appelez Brussels Hair Station">Appelez-nous</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#prestations">Prestations</a></li>
+        <li><a href="#avis">Avis clients</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#horaires">Horaires</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informations</h4>
+      <p>Av. Dailly 212<br>1030 Schaerbeek<br>Belgique</p>
+      <p style="margin-top:0.75rem;"><a href="tel:+3249399919">+32 493 99 91 91</a></p>
+      <p style="margin-top:0.75rem; font-size:0.82rem; color:rgba(255,255,255,0.4);">Ouvert du mardi au dimanche.<br>Accueil sans rendez-vous possible.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 BRUSSELS HAIR STATION — Barbier & Salon de coiffure à Schaerbeek, Bruxelles.</p>
+    <p>Barbier Schaerbeek — Coiffeur Schaerbeek — Salon de coiffure Bruxelles</p>
+  </div>
+</footer>
+
+<script>
+  // ===================== BURGER MENU =====================
+  const burger = document.getElementById('burger');
+  const navMenu = document.getElementById('nav-menu');
+
+  burger.addEventListener('click', function() {
+    const isOpen = navMenu.classList.toggle('open');
+    burger.classList.toggle('active', isOpen);
+    burger.setAttribute('aria-expanded', isOpen.toString());
+  });
+
+  navMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navMenu.classList.remove('open');
+      burger.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ===================== FADE-IN SCROLL =====================
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  fadeEls.forEach(function(el) { observer.observe(el); });
+
+  // ===================== CAROUSEL =====================
+  const track = document.getElementById('carouselTrack');
+  const slides = track.querySelectorAll('.carousel-slide');
+  let current = 0;
+
+  function getVisibleCount() {
+    return window.innerWidth >= 768 ? 2 : 1;
+  }
+
+  function getSlideWidth() {
+    const gap = 20;
+    const visible = getVisibleCount();
+    const trackWidth = track.parentElement.offsetWidth;
+    return (trackWidth - gap * (visible - 1)) / visible;
+  }
+
+  function updateCarousel() {
+    const slideW = getSlideWidth();
+    const gap = 20;
+    const offset = current * (slideW + gap);
+    track.style.transform = 'translateX(-' + offset + 'px)';
+    slides.forEach(function(s) {
+      s.style.flex = '0 0 ' + slideW + 'px';
+    });
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', function() {
+    const visible = getVisibleCount();
+    const maxIndex = slides.length - visible;
+    current = current >= maxIndex ? 0 : current + 1;
+    updateCarousel();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', function() {
+    const visible = getVisibleCount();
+    const maxIndex = slides.length - visible;
+    current = current <= 0 ? maxIndex : current - 1;
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', function() {
+    current = 0;
+    updateCarousel();
+  });
+
+  updateCarousel();
+</script>
+<!-- KAMKOD:DEMO_START -->
+<script>
+(function(){
+  var URL = 'https://checkout.kamkod.com/?lead=ChIJBcx9g8bDw0cRpMuSMNG9cOI';
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('a, button, [role="button"]');
+    if(!el || el.closest('form')) return;               /* formulaire -> endpoint contact */
+    if(el.classList.contains('cta')) { e.preventDefault(); window.location.href = URL; return; }
+    if(el.closest('header nav, nav')) return;           /* navigation interne de la démo */
+    var a = e.target.closest('a');
+    if(!a) return;                                      /* bouton seul hors nav: on laisse */
+    var href = a.getAttribute('href') || '';
+    if(href.charAt(0) === '#') return;                  /* ancres de section */
+    if(/^https?:|^\/\//i.test(href)) return;          /* lien externe réel */
+    e.preventDefault(); window.location.href = URL;     /* tel:, mailto:, javascript:… */
+  }, true);
+})();
+</script>
+<div id="kamkod-demo-banner" style="position:fixed;bottom:0;left:0;right:0;background:#000;color:#fff;padding:12px 16px;text-align:center;z-index:9999;font-family:system-ui,sans-serif;font-size:14px;">
+  Ceci est un aperçu de votre futur site — <a href="https://checkout.kamkod.com/?lead=ChIJBcx9g8bDw0cRpMuSMNG9cOI" style="color:#FFD700;font-weight:600;">activez-le maintenant</a>
+</div>
+<!-- KAMKOD:DEMO_END -->
+</body>
+</html>
